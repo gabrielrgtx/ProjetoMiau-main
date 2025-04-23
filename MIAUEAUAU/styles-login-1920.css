@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+body {
+    font-family: sans-serif;
+    background-color: #f9f4f9;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 50px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px;
+}
+
+header {
+    background-color: #f0e6f8;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #e0d8e5;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 70px;
+    margin-right: 10px;
+}
+
+header .logo h1 {
+    color: #8c52ff;
+    margin: 0;
+    font-family: 'Chewy', sans-serif;
+}
+
+main.login-section {
+    padding: 30px;
+    text-align: center;
+}
+
+main.login-section h2 {
+    color: #8c52ff;
+    margin-bottom: 10px;
+}
+
+main.login-section p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.input-group label {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.input-group input[type="email"],
+.input-group input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.forgot-password a {
+    color: #8c52ff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.button.primary {
+    background-color: #8c52ff;
+}
+
+.button.primary:hover {
+    background-color: #703ade;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: #ccc;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex-grow: 1;
+    background-color: #ccc;
+    height: 1px;
+    margin: 0 10px;
+}
+
+.social-login {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.button.social {
+    background-color: #eee;
+    color: #333;
+}
+
+.button.social:hover {
+    background-color: #ddd;
+}
+
+.button.social img {
+    height: 35px;
+}
+
+.button.google {
+    background-color: #486696;
+    color: white;
+}
+
+.button.google:hover {
+    background-color: #357ae8;
+}
+
+.button.facebook {
+    background-color: #1877f2;
+    color: white;
+}
+
+.button.facebook:hover {
+    background-color: #1565c0;
+}
+
+.button.apple {
+    background-color: #000;
+    color: white;
+}
+
+.button.apple:hover {
+    background-color: #222;
+}
+
+.create-account {
+    font-size: 14px;
+    color: #555;
+}
+
+.create-account a {
+    color: #8c52ff;
+    text-decoration: none;
+}
+
+.create-account a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #f0e6f8;
+    padding: 30px;
+    border-top: 1px solid #e0d8e5;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    text-align: left;
+}
+
+.footer-logo {
+    text-align: center;
+}
+
+.footer-logo img {
+    height: 70px;
+    margin-bottom: 5px;
+}
+
+.footer-logo p {
+    color: #8c52ff;
+    font-weight: bold;
+    margin: 0;
+    font-family: 'Chewy', sans-serif;
+    font-size: 27px;
+}
+
+footer h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-icons img {
+    height: 25px;
+}

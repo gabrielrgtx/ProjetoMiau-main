@@ -1,0 +1,612 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+:root {
+    --roxo: #8373BF;
+    --amarelo: #ffeb3b;
+    --laranja: #ff9800;
+    --laranja-hover: #e68900;
+    --roxo-escuro: #4a0f6e;
+    --cinza-claro: #f9f9f9;
+    --branco: #ffffff;
+    --preto: #000000;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--branco);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 1280px; 
+    max-width: 100%; 
+    margin: 0 auto; 
+    height: 720px; 
+    overflow-y: auto; 
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+.rounded {
+    border-radius: 10px;
+}
+
+.shadow {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+header {
+    width: 100%;
+    max-width: 1920px; 
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px; 
+}
+
+header h1 {
+    font-size: 2em; 
+}
+
+.nome-empresa {
+    font-family: 'Chewy', cursive;
+    color: var(--roxo);
+    font-size: 28px;
+    margin-left: -320px;
+    font-size: 32px;
+    margin-left: 0; 
+}
+.nome-empresa-footer {
+    font-family: 'Chewy', sans-serif;
+    font-size: 20px; 
+    font-weight: lighter; 
+    color: var(--preto);
+    margin-top: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+nav ul li a {
+    color: var(--roxo);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    font-family: Arial, sans-serif;
+}
+
+nav ul li a:hover {
+    color: var(--amarelo);
+}
+
+
+.btn {
+  background-color: var(--laranja);
+  color: var(--branco);
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 80px;
+  font-size: 19px;
+  font-family: 'Poppins', sans-serif; 
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(--laranja-hover);
+    transform: scale(1.05);
+}
+
+.btn-consulta {
+  background-color: var(--laranja);
+  color: var(--branco);
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 80px;
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-consulta:hover {
+    background-color: var(--laranja-hover);
+    transform: scale(1.05);
+}
+
+.btn-profissionais {
+    background-color: var(--laranja);
+    color: var(--branco);
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 400px;
+    font-size: 19px;
+    font-family: 'Poppins', sans-serif;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-profissionais:hover {
+    background-color: var(--laranja-hover);
+    transform: scale(1.05);
+}
+
+
+.hero {
+    background-color: var(--roxo);
+    color: var(--branco);
+    text-align: center;
+    padding: 80px 0;
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: ellipse(80% 100% at 80% 50%);
+    -webkit-clip-path: ellipse(80% 100% at 90% 50%);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 2.2em;
+    font-family: 'Chewy', cursive;
+}
+
+.hero p {
+    font-size: 18px;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+.destaque {
+    color: var(--amarelo);
+}
+
+
+.servicos {
+    padding: 50px;
+    text-align: center;
+}
+
+.servicos h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background: var(--branco);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--preto);
+    text-align: center;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+    background-color: var(--roxo);
+    color: var(--branco);
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-image {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover .card-image {
+    transform: rotate(8deg) scale(1.1);
+}
+
+.card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-family: 'Arial', cursive;
+    transition: color 0.3s ease-in-out;
+}
+
+.card:hover h3 {
+    color: var(--amarelo);
+}
+
+.card p,
+.card a {
+    font-family: Arial, sans-serif;
+}
+
+.card p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.card a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--roxo);
+    transition: color 0.3s ease-in-out;
+}
+
+.card:hover a {
+    color: var(--amarelo);
+}
+
+
+.nossos-numeros {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--branco); /
+}
+
+.nossos-numeros h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: var(--roxo);
+    font-family: 'Arial', sans-serif;
+}
+
+.numeros-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.numero-item {
+    text-align: center;
+}
+
+.numero {
+    display: block;
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--roxo);
+    font-family: 'Chewy', cursive;
+    margin-bottom: 10px;
+}
+
+.legenda {
+    font-size: 16px;
+    color: #555;
+    font-family: Arial, sans-serif;
+}
+
+    .numero {
+        font-size: 36px;
+    }
+
+    .legenda {
+        font-size: 14px;
+    }
+
+
+
+.avaliacoes {
+    text-align: center;
+    padding: 50px;
+    background-color: var(--cinza-claro);
+    font-family: Arial, sans-serif;
+}
+
+.avaliacoes h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.foto-avaliador {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.comentarios {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.comentario {
+    background: var(--branco);
+    padding: 20px;
+    border-radius: 10px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.comentario:hover {
+    transform: scale(1.05);
+}
+
+.comentario h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-family: 'Arial', cursive;
+}
+
+.comentario p {
+    font-size: 16px;
+}
+
+
+.profissionais {
+    text-align: center;
+    padding: 20px;
+    background-color: #fdf3dc; 
+    font-family: Arial, sans-serif;
+    margin-top: 0px; 
+    margin-bottom: -30px; 
+}
+
+.profissionais h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: 'Arial', cursive;
+}
+
+.imagens {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 20px;
+}
+
+.imagens figure {
+    text-align: center;
+    max-width: 120px;
+}
+
+.imagens img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: contain; 
+    background-color: var(--branco); 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imagens img:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.imagens figcaption {
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--roxo);
+    word-wrap: break-word;
+    text-align: center;
+    font-family: 'Arial', cursive;
+}
+
+
+footer {
+    background-color: var(--roxo);
+    color: var(--preto);
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+footer h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+footer p {
+    font-size: 16px;
+}
+@keyframes moveBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+
+footer .contato h3 {
+    
+    color: #000000; 
+}
+
+footer .contato p {
+    
+    color: #000000;
+}
+
+
+.logo-empresa {
+    max-width: 200px;
+    height: 50px;
+    vertical-align: middle;
+}
+
+.logo-google {
+    width: 180px;
+    height: auto;
+    vertical-align: middle;
+}
+
+.faixa-roxa {
+    background-color: var(--roxo); 
+    color: var(--branco);
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.faixa-roxa-conteudo {
+    max-width: 1200px; 
+    margin: 0 auto;
+}
+
+.faixa-roxa h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-family: 'Chewy', cursive;
+}
+
+.btn-consulta-faixa {
+  background-color: var(--laranja);
+  color: var(--branco);
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 80px;
+  font-size: 19px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-consulta-faixa:hover {
+    background-color: var(--laranja-hover); 
+    color: var(--branco); 
+    transform: scale(1.05); 
+}
+footer {
+    background-color: #fdf3dc;
+    color: var(--preto);
+    padding: 20px 40px; 
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 20px 40px;
+    width: 100%; 
+  }
+  
+  .footer-info {
+    text-align: center;
+    flex: 1; 
+  }
+  
+  .footer-info.empresa {
+    text-align: left; 
+    flex: 0 0 auto; 
+  }
+
+  .footer-info.empresa .logo-nome {
+    display: flex;
+    align-items: center;  
+    gap: 10px;  
+  }
+  .nome-empresa-footer {
+    font-size: 50px; 
+    color: #8373BF; 
+    font-family: 'Chewy', cursive;  
+    position: relative;  
+    top: 20px;  
+    left: -500px;  
+    margin: 0;
+}
+
+  
+  .footer-info h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: var(--roxo);
+  }
+  
+  .footer-info p,
+  .footer-info ul {
+    font-size: 16px;
+    color: roxo;
+    margin: 0;
+  }
+  
+  .redes-sociais img {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+  }
+.footer-info:not(.empresa) {
+  text-align: center; 
+  margin: 10px auto; 
+}
+
+.footer-container {
+    position: relative; 
+    height: 120px; 
+}
+
+.logo-footer {
+    position: absolute; 
+    top: 30px; 
+    left: -50px; 
+    width: 200px; 
+    height: auto; 
+}
+
+.footer-info.horarios,
+.footer-info.localizacao {
+  text-align: center; 
+}
+
+.footer-info {
+  margin: 400px; 
+
+}
