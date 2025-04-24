@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap'); /* Se quiser usar a fonte do logo */
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+body {
+    font-family: sans-serif;
+    background-color: #fff;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #EBE8FC;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 90%;
+    max-width: 1000px; 
+    margin: 20px;
+    display: flex;
+    flex-direction: column; 
+}
+
+header {
+    background-color: #fff; 
+    padding: 20px;
+    border-bottom: 1px solid #e0d8e5; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 50px;  
+    margin-right: 15px;
+}
+
+header .logo h1 {
+    color: #8c52ff; 
+    margin: 0;
+    font-family: 'Chewy', sans-serif; 
+}
+
+main.cadastro-section {
+    padding: 30px;
+    text-align: center;
+}
+
+main.cadastro-section h2 {
+    color: #8c52ff;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif; 
+}
+
+main.cadastro-section p {
+    color: #555;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.senha-container {
+    display: flex;
+}
+
+.senha-container > div {
+    flex: 1;
+    width: 50%; 
+}
+
+.senha-container > div:nth-child(2) {
+    margin-left: -300px; 
+}
+
+.required {
+    color: red;
+    margin-left: 2px; /* Ajuste o espaçamento conforme necessário */
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+}
+
+button[type="submit"] {
+    background-color: #8c52ff;
+    color: white;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #703ade;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.login-link a {
+    color: #8c52ff;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #f0e6f8; 
+    padding: 30px;
+    border-top: 1px solid #e0d8e5; 
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    text-align: left;
+}
+
+.footer-logo {
+    text-align: left; 
+}
+
+.footer-logo img {
+    height: 50px; 
+    margin-bottom: 5px;
+}
+
+.footer-logo p {
+    color: #8c52ff;
+    font-weight: bold;
+    margin: 0;
+    font-family: 'Chewy', sans-serif; 
+    font-size: 24px; 
+}
+
+footer h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+footer p {
+    color: #555;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.social-icons {
+    text-align: left;
+}
+
+.social-icons h3 {
+    margin-bottom: 10px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.social-icons img {
+    height: 25px; 
+}
