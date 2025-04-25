@@ -102,7 +102,7 @@ input[type="password"] {
 
 .required {
     color: red;
-    margin-left: 2px; /* Ajuste o espaçamento conforme necessário */
+    margin-left: 2px;
 }
 
 .checkbox-group {
