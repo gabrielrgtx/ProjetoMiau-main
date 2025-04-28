@@ -19,7 +19,7 @@ body {
 }
 
 .profile-sidebar {
-    background-color: #f9f9f9;
+    background-color: #fff;
     border-right: 10px solid #eee;
     width: 200px; 
     padding: 20px;
@@ -91,8 +91,8 @@ body {
 
 .profile-picture-container {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     overflow: hidden;
     margin-bottom: 15px; 
@@ -108,38 +108,51 @@ body {
     object-fit: cover;
 }
 
-.edit-photo-button {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    text-align: center;
-    padding: 5px;
-    font-size: 0.8em;
+.edit-photo-button, .delete-photo-button {
+    display: inline-block;
+    margin: 10px;
+    padding: 8px 12px;
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.3s ease;
 }
 
-.profile-picture-container:hover .edit-photo-button {
-    opacity: 1;
+.profile-info {
+    display: grid;
+    flex-direction: column; 
+    align-items: center;
+    width: 100%;
+}
+
+.photo-actions {
+    text-align: center; 
+}
+
+.delete-photo-button {
+    background-color: #f44336; 
+}
+
+.edit-photo-button:hover, .delete-photo-button:hover {
+    opacity: 0.8;
 }
 
 .profile-info label {
     display: block;
+    text-align: left;
+    padding-left: 5px;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #555;
+    color: #131212;
 }
 
 .profile-info input[type="text"],
 .profile-info input[type="email"],
 .profile-info input[type="password"] {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 8px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
@@ -147,13 +160,15 @@ body {
 
 .profile-info button {
     background-color: #7950f2;
+    margin-right: 550px;
     color: #fff;
-    padding: 10px 15px;
+    padding: 8px 1px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 1;
     transition: background-color 0.3s ease;
+    margin-top: 10px;
 }
 
 .profile-info button:hover {
