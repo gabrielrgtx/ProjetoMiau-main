@@ -44,6 +44,9 @@ document.addEventListener("DOMContentLoaded", function() {
             if (profileInfo) profileInfo.style.display = shouldShowProfileElements ? 'block' : 'none';
             if (petPhotoContainer) petPhotoContainer.style.display = shouldShowProfileElements ? 'block' : 'none';
         });
+        document.getElementById('cpf').addEventListener('input', function (e) {
+            this.value = this.value.replace(/\D/g, '').slice(0, 11); // Remove caracteres não numéricos e limita a 11 dígitos
+        });
     });
 
     const defaultActiveButton = document.querySelector('.sidebar-menu button.active');
