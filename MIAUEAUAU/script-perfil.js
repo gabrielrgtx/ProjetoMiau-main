@@ -19,40 +19,42 @@ document.addEventListener("DOMContentLoaded", function() {
         'Meus PETS': document.getElementById('meusPets')
     };
 
-    const profileHeader = document.querySelector('.profile-header');
-    const profilePictureContainer = document.querySelector('.profile-picture-container');
-    const profileInfo = document.querySelector('.profile-info');
-    const petPhotoContainer = document.querySelector('.pet-photo-container');
+    const profileForm = document.getElementById('profileForm'); // Formulário de dados pessoais
+    const petPhotoContainer = document.querySelector('.pet-photo-container'); // Foto do PET
 
     menuButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
+            // Remove a classe 'active' de todos os botões
             menuButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
 
+            // Oculta todos os conteúdos
             for (const key in contentDivs) {
                 contentDivs[key].style.display = 'none';
             }
-            
+
+            // Exibe o conteúdo da aba selecionada
             const buttonText = this.textContent;
             if (contentDivs[buttonText]) {
                 contentDivs[buttonText].style.display = 'block';
             }
 
-            const shouldShowProfileElements = buttonText === 'Dados pessoais';
-            if (profileHeader) profileHeader.style.display = shouldShowProfileElements ? 'block' : 'none';
-            if (profilePictureContainer) profilePictureContainer.style.display = shouldShowProfileElements ? 'block' : 'none';
-            if (profileInfo) profileInfo.style.display = shouldShowProfileElements ? 'block' : 'none';
-            if (petPhotoContainer) petPhotoContainer.style.display = shouldShowProfileElements ? 'block' : 'none';
-        });
-        document.getElementById('cpf').addEventListener('input', function (e) {
-            this.value = this.value.replace(/\D/g, '').slice(0, 11); // Remove caracteres não numéricos e limita a 11 dígitos
+            // Exibe ou oculta elementos específicos
+            const shouldShowProfileForm = buttonText === 'Dados pessoais';
+            profileForm.style.display = shouldShowProfileForm ? 'block' : 'none';
+            petPhotoContainer.style.display = shouldShowProfileForm ? 'block' : 'none'; // Oculta a foto de perfil e opções
         });
     });
 
+    // Clique inicial na aba ativa
     const defaultActiveButton = document.querySelector('.sidebar-menu button.active');
     if (defaultActiveButton) {
         defaultActiveButton.click();
     }
+
+    document.getElementById('cpf').addEventListener('input', function (e) {
+        this.value = this.value.replace(/\D/g, '').slice(0, 11); // Remove caracteres não numéricos e limita a 11 dígitos
+    });
 
     // Lógica para mudança da foto
     const editPhotoButton = document.querySelector('.edit-photo-button');
@@ -82,4 +84,23 @@ document.addEventListener("DOMContentLoaded", function() {
             profileImage.src = 'placeholder-profile.png'; // Volta para a imagem padrão
         }
     });
+
+    const consultasDiv = document.getElementById('consultas');
+    const meusPetsDiv = document.getElementById('meusPets');
+
+    // Simulação de dados do usuário
+    const consultas = []; // Lista de consultas do usuário
+    const meusPets = []; // Lista de pets do usuário
+
+    if (consultas.length === 0) {
+        consultasDiv.innerHTML = '<p>Você ainda não possui consultas cadastradas.</p>';
+    } else {
+        consultasDiv.innerHTML = '<ul>' + consultas.map(c => `<li>${c}</li>`).join('') + '</ul>';
+    }
+
+    if (meusPets.length === 0) {
+        meusPetsDiv.innerHTML = '<p>Você ainda não cadastrou seus pets.</p>';
+    } else {
+        meusPetsDiv.innerHTML = '<ul>' + meusPets.map(p => `<li>${p}</li>`).join('') + '</ul>';
+    }
 });

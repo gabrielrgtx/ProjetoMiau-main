@@ -75,5 +75,45 @@
         </main>
     </div>
     <script src="script-perfil.js"></script>
+    <script>
+        const menuButtons = document.querySelectorAll('.sidebar-menu button');
+        const contentDivs = {
+            'Dados pessoais': document.getElementById('dadosPessoais'),
+            'Consultas': document.getElementById('consultas'),
+            'Meus PETS': document.getElementById('meusPets')
+        };
+        const profileForm = document.getElementById('profileForm');
+        const petPhotoContainer = document.querySelector('.pet-photo-container');
+
+        menuButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Remove a classe 'active' de todos os botões
+                menuButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+
+                // Oculta todos os conteúdos
+                for (const key in contentDivs) {
+                    contentDivs[key].style.display = 'none';
+                }
+
+                // Exibe o conteúdo da aba selecionada
+                const buttonText = this.textContent;
+                if (contentDivs[buttonText]) {
+                    contentDivs[buttonText].style.display = 'block';
+                }
+
+                // Exibe ou oculta elementos específicos
+                const shouldShowProfileForm = buttonText === 'Dados pessoais';
+                profileForm.style.display = shouldShowProfileForm ? 'block' : 'none';
+                petPhotoContainer.style.display = shouldShowProfileForm ? 'block' : 'none'; // Oculta a foto de perfil e opções
+            });
+        });
+
+        // Clique inicial na aba ativa
+        const defaultActiveButton = document.querySelector('.sidebar-menu button.active');
+        if (defaultActiveButton) {
+            defaultActiveButton.click();
+        }
+    </script>
 </body>
 </html>
