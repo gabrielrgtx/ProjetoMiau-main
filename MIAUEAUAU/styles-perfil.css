@@ -7,6 +7,11 @@ body {
     min-height: 100vh; 
 }
 
+body.consultas-ativa .profile-info,
+body.meus-pets-ativa .profile-info {
+    display: none;
+}
+
 .profile-page-container {
     display: flex;
     width: 100%;
@@ -175,17 +180,17 @@ body {
     background-color: #5f3dc4;
 }
 
-.pet-photo-container {
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
-    margin-top: 20px;
-    text-align: center;
-}
+
 
 .pet-photo {
     max-width: 150px;
     height: auto;
     border-radius: 4px;
     margin-top: 10px;
+}
+
+/* Oculta a foto de perfil e as opções de edição nas abas "Consultas" e "Meus PETS" */
+body.consultas-ativa .pet-photo-container,
+body.meus-pets-ativa .pet-photo-container {
+    display: none;
 }
