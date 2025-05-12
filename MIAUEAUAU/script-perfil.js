@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function() {
         meusPetsDiv.innerHTML = '<ul>' + meusPets.map(p => `<li>${p}</li>`).join('') + '</ul>';
     }
 
-    // Carregar dados do localStorage
+    
     ['nome', 'sobrenome', 'email', 'senha', 'cpf'].forEach(id => {
         const input = document.getElementById(id);
         const savedValue = localStorage.getItem(id);
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
         profileImage.src = savedPhoto;
     }
 
-    // Validação e salvamento
+    
     profileForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        // Salvar no localStorage
+        
         localStorage.setItem('nome', nome);
         localStorage.setItem('sobrenome', sobrenome);
         localStorage.setItem('email', email);
@@ -152,4 +152,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
         alert('Dados salvos com sucesso!');
     });
+
+    const editPetPhotoButton = document.querySelector('.edit-pet-photo-button');
+    const petFileInput = document.getElementById('petFileInput');
+    const petPhoto = document.querySelector('.pet-photo');
+
+    editPetPhotoButton.addEventListener('click', function() {
+        petFileInput.click();
+    });
+
+    petFileInput.addEventListener('change', function() {
+        if (petFileInput.files && petFileInput.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                petPhoto.src = e.target.result;
+                localStorage.setItem('petPhoto', e.target.result); 
+            }
+            reader.readAsDataURL(petFileInput.files[0]);
+        }
+    });
+
+    const savedPetPhoto = localStorage.getItem('petPhoto');
+    if (savedPetPhoto) {
+        petPhoto.src = savedPetPhoto;
+    }
 });

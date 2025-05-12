@@ -189,8 +189,96 @@ body.meus-pets-ativa .profile-info {
     margin-top: 10px;
 }
 
-/* Oculta a foto de perfil e as opções de edição nas abas "Consultas" e "Meus PETS" */
+
 body.consultas-ativa .pet-photo-container,
 body.meus-pets-ativa .pet-photo-container {
     display: none;
+}
+
+
+button {
+    background-color: #7950f2;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+button:hover {
+    background-color: #5f3dc4;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+
+.edit-photo-button {
+    background-color: #4CAF50;
+}
+
+.edit-photo-button:hover {
+    background-color: #388E3C;
+}
+
+.delete-photo-button {
+    background-color: #f44336;
+}
+
+.delete-photo-button:hover {
+    background-color: #d32f2f;
+}
+
+
+button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+
+.edit-pet-photo-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-right: 10px;
+}
+
+.edit-pet-photo-button:hover {
+    background-color: #388E3C;
+    transform: translateY(-2px);
+}
+
+
+.delete-pet-photo-button {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-left: 10px;
+}
+
+.delete-pet-photo-button:hover {
+    background-color: #d32f2f;
+    transform: translateY(-2px);
+}
+
+
+.pet-photo-actions {
+    text-align: left;
+    margin-top: 10px;
 }
