@@ -1,0 +1,93 @@
+import React from 'react';
+
+export default function ProfilePage() {
+  return (
+    <div className="min-h-screen bg-gray-50 flex flex-col">
+      {/* Header */}
+      <header className="bg-purple-100 p-4 flex items-center justify-between">
+        <h1 className="text-3xl font-chewy text-purple-700">Miau & Auau</h1>
+        <nav className="space-x-8 text-purple-700 font-chewy">
+          <button className="">Horários</button>
+          <button className="">Localização</button>
+          <button className="">Contato</button>
+          <button className="">Siga-nos</button>
+        </nav>
+      </header>
+
+      {/* Main content */}
+      <main className="flex flex-1">
+        {/* Sidebar */}
+        <aside className="w-1/4 bg-white shadow p-6">
+          <div className="mb-6">
+            <h2 className="text-xl font-inter">Seu perfil</h2>
+            <p className="text-gray-500 font-oswald">Olá, Jair! Abaixo seus dados pessoais</p>
+          </div>
+          <ul className="space-y-4 font-inter text-gray-700">
+            <li className="py-2 px-4 bg-yellow-100 rounded">Consultas</li>
+            <li className="py-2 px-4 bg-gray-100 rounded">Dados Pessoais</li>
+            <li className="py-2 px-4 bg-gray-100 rounded">Meus PETS</li>
+          </ul>
+        </aside>
+
+        {/* Profile form */}
+        <section className="flex-1 bg-white p-8">
+          <div className="max-w-3xl mx-auto space-y-6">
+            <div className="flex items-center space-x-6">
+              {/* Profile picture */}
+              <div className="relative">
+                <img
+                  src="/path/to/avatar.png"
+                  alt="Avatar"
+                  className="w-24 h-24 rounded-full shadow"
+                />
+                <button className="absolute bottom-0 right-0 bg-yellow-200 p-1 rounded">Mudar Foto</button>
+              </div>
+
+              {/* Buttons */}
+              <div className="flex space-x-4">
+                <button className="px-4 py-2 bg-yellow-200 rounded">Mudar Foto</button>
+                <button className="px-4 py-2 bg-red-600 text-white rounded">Apagar Foto</button>
+              </div>
+            </div>
+
+            {/* Form fields */}
+            <form className="grid grid-cols-2 gap-6">
+              <div>
+                <label className="block text-gray-600">Nome</label>
+                <input className="mt-1 w-full border rounded p-2" defaultValue="Jair" />
+              </div>
+              <div>
+                <label className="block text-gray-600">Sobrenome</label>
+                <input className="mt-1 w-full border rounded p-2" defaultValue="Messias" />
+              </div>
+              <div>
+                <label className="block text-gray-600">E-mail</label>
+                <input className="mt-1 w-full border rounded p-2" defaultValue="messias@gmail.com" />
+              </div>
+              <div>
+                <label className="block text-gray-600">Senha</label>
+                <input type="password" className="mt-1 w-full border rounded p-2" defaultValue="********" />
+              </div>
+              <div>
+                <label className="block text-gray-600">CPF</label>
+                <input className="mt-1 w-full border rounded p-2" defaultValue="123.124.152-12" />
+              </div>
+            </form>
+
+            {/* Save button */}
+            <div>
+              <button className="px-6 py-3 bg-yellow-200 rounded font-medium">Salvar mudanças</button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-yellow-50 p-6 text-center text-sm text-gray-600">
+        <p>Av. Eng. Eusébio Stevaux, 823 - Santo Amaro, São Paulo - SP, 04696-000</p>
+        <p>Segunda - Domingo: 10 am - 9 pm | Todos os feriados</p>
+        <p>Alguma pergunta? Ligue para 617-608-3131</p>
+      </footer>
+    </div>
+  );
+}

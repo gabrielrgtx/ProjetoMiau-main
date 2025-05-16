@@ -1,0 +1,166 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Miau & Auau – Perfil</title>
+
+  <!-- Font Awesome -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Nosso CSS externo -->
+  <link rel="stylesheet" href="teste1.css"/>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo-container">
+<img src="logo1.png"
+        alt="Logo Miau & Auau"
+        class="header-logo"
+      <span class="logo-text">Miau &amp; Auau</span>
+      </div>
+      <nav class="nav-desktop">
+        <a href="#">Meu perfil</a>
+        <a href="#">Sobre</a>
+        <a href="#">Serviços</a>
+        <a href="#">FAQ</a>
+      </nav>
+      <button type="button" class="btn-consult">Marcar consulta</button>
+    </div>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="main-content">
+    <section class="profile-section">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <h2>Seu perfil</h2>
+        <nav class="sidebar-menu">
+          <button class="tab-button active" data-target="consultas">
+            <i class="far fa-calendar-alt"></i> Consultas
+          </button>
+          <button class="tab-button" data-target="dados-pessoais">
+            <i class="far fa-user-circle"></i> Dados Pessoais
+          </button>
+          <button class="tab-button" data-target="meus-pets">
+            <i class="far fa-heart"></i> Meus PETS
+          </button>
+        </nav>
+      </aside>
+
+      <!-- Área de conteúdo -->
+      <article class="content">
+        <!-- Consultas -->
+        <div id="consultas" class="section">
+          <h3>Minhas Consultas</h3>
+          <div id="consultasContent"></div>
+        </div>
+
+        <!-- Dados Pessoais -->
+        <div id="dados-pessoais" class="section hidden">
+          <h3>Olá <span id="userNameDisplay">Cliente</span>! Abaixo seus dados pessoais</h3>
+          <div class="profile-photo-area">
+            <span>Foto de perfil</span>
+            <img
+              src="https://storage.googleapis.com/a1aa/image/861c762e-ca89-4b87-e68e-8188d7f061c7.jpg"
+              alt="Avatar de perfil"
+              class="profile-picture"
+            />
+            <div class="photo-buttons">
+              <button type="button" class="edit-photo-button">Mudar Foto</button>
+              <button type="button" class="delete-photo-button">Apagar Foto</button>
+            </div>
+            <input type="file" id="fileInput" class="hidden" accept="image/*"/>
+          </div>
+          <form id="profileForm" class="profile-form">
+            <label>
+              <span>Nome</span>
+              <input id="nome" name="nome" type="text"/>
+            </label>
+            <label>
+              <span>Sobrenome</span>
+              <input id="sobrenome" name="sobrenome" type="text"/>
+            </label>
+            <label>
+              <span>E-mail</span>
+              <input id="email" name="email" type="email"/>
+            </label>
+            <label class="position-relative">
+              <span>Senha</span>
+              <input id="senha" name="senha" type="password"/>
+              <span id="toggleSenha" class="toggle-password">Mostrar</span>
+            </label>
+            <label>
+              <span>CPF</span>
+              <input id="cpf" name="cpf" type="text" maxlength="14"/>
+            </label>
+            <button type="submit" class="btn-highlight">Salvar mudanças</button>
+          </form>
+        </div>
+
+        <!-- Meus PETS -->
+        <div id="meus-pets" class="section hidden">
+          <h3>Meus PETS</h3>
+          <div id="meusPetsContent"></div>
+          <div class="profile-photo-area">
+            <span>Foto do PET</span>
+            <img
+              src="francisco.jpeg"
+              alt="Foto do PET"
+              class="pet-photo"
+            />
+            <div class="photo-buttons">
+              <button type="button" class="edit-pet-photo-button">Mudar Foto do PET</button>
+              <button type="button" class="delete-pet-photo-button">Apagar Foto do PET</button>
+            </div>
+            <input type="file" id="petFileInput" class="hidden" accept="image/*"/>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="logo1.png"
+          alt="Logo Miau & Auau"
+          class="footer-logo" />
+        <span>MIAU &amp; AUAU</span>
+      </div>
+      <div class="footer-info">
+        <div class="footer-section">
+          <p class="footer-title">Horários</p>
+          <p>• Segunda - Domingo: 10 am - 9 pm</p>
+          <p>• Todos os feriados</p>
+        </div>
+        <div class="footer-section">
+          <p class="footer-title">Localização</p>
+          <p>Av. Eng. Eusébio Stevaux, 823 - Santo Amaro, São Paulo - SP, 04696-000</p>
+        </div>
+        <div class="footer-section">
+          <p class="footer-title">Contato</p>
+          <p>Alguma pergunta? Ligue para<br/><strong>617-608-3131</strong></p>
+        </div>
+      </div>
+      <div class="footer-indicators">
+        <span class="indicator primary"></span>
+        <span class="indicator secondary"></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script-teste.js"></script>
+</body>
+</html>

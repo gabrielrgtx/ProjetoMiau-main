@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const toggleSenha = document.getElementById("toggleSenha");
-  const senhaInput   = document.getElementById("senha");
+  // Saudação personalizada
+  document.getElementById('userNameDisplay').textContent =
+    localStorage.getItem('nome') || 'Cliente';
 
   // Mostrar / ocultar senha
+  const toggleSenha = document.getElementById("toggleSenha");
+  const senhaInput  = document.getElementById("senha");
   toggleSenha.addEventListener("click", () => {
     const isPwd = senhaInput.type === "password";
     senhaInput.type = isPwd ? "text" : "password";
@@ -10,32 +13,27 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Tabs do menu
-  const menuButtons  = document.querySelectorAll('.sidebar-menu button');
-  const sections     = document.querySelectorAll('.section');
-
+  const menuButtons = document.querySelectorAll('.sidebar-menu button');
+  const sections    = document.querySelectorAll('.section');
   menuButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       // ativa só um botão
       menuButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
       // esconde todas as seções
       sections.forEach(sec => sec.classList.add('hidden'));
-
       // mostra só a desejada
       const target = btn.dataset.target;
       document.getElementById(target).classList.remove('hidden');
-
-      // ajusta a classe do body para estilos condicionais
+      // ajusta classe no body (para CSS condicional, se quiser)
       document.body.className = '';
       document.body.classList.add(target + '-ativa');
     });
   });
-
   // dispara primeira aba
   document.querySelector('.sidebar-menu button.active').click();
 
-  // Formatação de CPF
+  // Formatação automática de CPF
   document.getElementById('cpf').addEventListener('input', e => {
     let v = e.target.value.replace(/\D/g, '').slice(0,11);
     v = v
@@ -45,10 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
     e.target.value = v;
   });
 
-  // Photo Upload/Profile Pic
-  const profileImage       = document.querySelector('.profile-picture');
-  const fileInput          = document.getElementById('fileInput');
-  document.querySelector('.edit-photo-button').addEventListener('click', () => fileInput.click());
+  // Upload / exclusão de foto de perfil
+  const profileImage = document.querySelector('.profile-picture');
+  const fileInput    = document.getElementById('fileInput');
+  document.querySelector('.edit-photo-button')
+          .addEventListener('click', () => fileInput.click());
   fileInput.addEventListener('change', () => {
     const file = fileInput.files[0];
     if (!file) return;
@@ -59,17 +58,19 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     reader.readAsDataURL(file);
   });
-  document.querySelector('.delete-photo-button').addEventListener('click', () => {
+  document.querySelector('.delete-photo-button')
+          .addEventListener('click', () => {
     if (confirm("Tem certeza que deseja apagar a foto de perfil?")) {
       profileImage.src = 'placeholder-profile.png';
       localStorage.removeItem('profilePhoto');
     }
   });
 
-  // Photo Upload/Pet Pic
-  const petPhoto  = document.querySelector('.pet-photo');
-  const petInput  = document.getElementById('petFileInput');
-  document.querySelector('.edit-pet-photo-button').addEventListener('click', () => petInput.click());
+  // Upload / exclusão de foto do PET
+  const petPhoto = document.querySelector('.pet-photo');
+  const petInput = document.getElementById('petFileInput');
+  document.querySelector('.edit-pet-photo-button')
+          .addEventListener('click', () => petInput.click());
   petInput.addEventListener('change', () => {
     const file = petInput.files[0];
     if (!file) return;
@@ -80,25 +81,31 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     reader.readAsDataURL(file);
   });
+  document.querySelector('.delete-pet-photo-button')
+          .addEventListener('click', () => {
+    if (confirm("Tem certeza que deseja apagar a foto do PET?")) {
+      petPhoto.src = 'francisco.jpeg';
+      localStorage.removeItem('petPhoto');
+    }
+  });
 
-  // Dados vindos do localStorage
-  const loadField = id => {
+  // Carregar dados salvos no localStorage
+  ['nome','sobrenome','email','senha','cpf'].forEach(id => {
     const v = localStorage.getItem(id);
     if (v) document.getElementById(id).value = v;
-  };
-  ['nome','sobrenome','email','senha','cpf'].forEach(loadField);
+  });
   const savedPhoto = localStorage.getItem('profilePhoto');
   if (savedPhoto) profileImage.src = savedPhoto;
   const savedPet = localStorage.getItem('petPhoto');
   if (savedPet) petPhoto.src = savedPet;
 
-  // Inicializa arrays de consultas e pets
+  // Listagem de Consultas e PETS
   const consultas = JSON.parse(localStorage.getItem('consultas') || '[]');
   const meusPets   = JSON.parse(localStorage.getItem('meusPets')   || '[]');
-  const contConsultas = document.getElementById('consultas');
-  const contPets      = document.getElementById('meusPets');
+  const contCons   = document.getElementById('consultasContent');
+  const contPets   = document.getElementById('meusPetsContent');
 
-  contConsultas.innerHTML = consultas.length
+  contCons.innerHTML = consultas.length
     ? `<ul>${consultas.map(c => `<li>${c}</li>`).join('')}</ul>`
     : '<p>Você ainda não possui consultas cadastradas.</p>';
 
@@ -106,11 +113,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ? `<ul>${meusPets.map(p => `<li>${p}</li>`).join('')}</ul>`
     : '<p>Você ainda não cadastrou seus pets.</p>';
 
-  // Validação de formulário
+  // Validação e salvamento do formulário
   const form = document.getElementById('profileForm');
   form.addEventListener('submit', e => {
     e.preventDefault();
-
     const nome      = form.nome.value.trim();
     const sobrenome = form.sobrenome.value.trim();
     const email     = form.email.value.trim();
@@ -128,9 +134,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return alert('A senha deve ter pelo menos 4 caracteres.');
     }
 
-    ['nome','sobrenome','email','senha','cpf'].forEach(id =>
-      localStorage.setItem(id, form[id].value.trim())
-    );
+    ['nome','sobrenome','email','senha','cpf'].forEach(id => {
+      localStorage.setItem(id, form[id].value.trim());
+    });
     alert('Dados salvos com sucesso!');
   });
 });
