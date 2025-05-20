@@ -1,25 +1,16 @@
-/* teste1.css */
-
 :root {
   --bg-main: #EBE8FC;
   --border-accent: #ffffff;
   --primary-color: #7567d1;
+  --accent-color: #6b4fdb;
   --text-dark: #3c3c3c;
   --btn-bg: #e07e2f;
   --btn-hover-bg: #c96e2a;
   --highlight-bg: #fef3c7;
   --highlight-text: #4a4a4a;
-  --accent-text: #6b4fdb;
 }
 
 .hidden { display: none !important; }
-.position-relative { position: relative; }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -28,15 +19,6 @@ body {
   flex-direction: column;
   min-height: 100vh;
   color: var(--text-dark);
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-thumb {
-  background-color: var(--border-accent);
-  border-radius: 10px;
 }
 
 /* Header */
@@ -51,7 +33,6 @@ body {
 }
 .header-logo {
   width: 48px;
-  height: auto;
   margin-right: 0.5rem;
   vertical-align: middle;
 }
@@ -80,11 +61,14 @@ body {
   gap: 1.5rem;
   font-size: 0.75rem;
 }
-.nav-desktop a {
-  text-decoration: none;
+.nav-desktop button {
+  background: none;
+  border: none;
   color: inherit;
+  font: inherit;
+  cursor: pointer;
 }
-.nav-desktop a:hover {
+.nav-desktop button:hover {
   text-decoration: underline;
 }
 .btn-consult {
@@ -119,7 +103,6 @@ body {
 .profile-section {
   background: white;
   border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   max-width: 64rem;
   width: 100%;
   display: flex;
@@ -128,9 +111,7 @@ body {
   min-height: 480px;
 }
 @media (min-width: 768px) {
-  .profile-section {
-    flex-direction: row;
-  }
+  .profile-section { flex-direction: row; }
 }
 .sidebar {
   width: 100%;
@@ -138,9 +119,7 @@ body {
   background: white;
 }
 @media (min-width: 768px) {
-  .sidebar {
-    width: 12rem;
-  }
+  .sidebar { width: 12rem; }
 }
 .sidebar h2 {
   font-size: 0.875rem;
@@ -170,9 +149,7 @@ body {
 .section {
   padding: 1.5rem;
 }
-.section.hidden {
-  display: none;
-}
+.section.hidden { display: none; }
 .section h3 {
   margin-bottom: 1.5rem;
   border-bottom: 1px solid #e5e7eb;
@@ -181,7 +158,7 @@ body {
   text-align: center;
 }
 
-/* Consultas: layout em grid */
+/* Consultas */
 .consultas-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -191,11 +168,26 @@ body {
 .consulta-form {
   background: #fff;
   padding: 2rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 0.8rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1.5rem;
+}
+#consultas .consulta-form select,
+#consultas .consulta-form input[type="text"] {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 0.5rem;
+  appearance: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+#consultas .consulta-form select:focus,
+#consultas .consulta-form input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(107,79,219,0.2);
 }
 .field-group label {
   display: flex;
@@ -206,23 +198,10 @@ body {
 }
 .field-group i {
   margin-bottom: 0.5rem;
-  color: var(--accent-text);
+  color: var(--accent-color);
   font-size: 1.25rem;
 }
-.consulta-form input,
-.consulta-form textarea {
-  padding: 0.75rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.25rem;
-  font-size: 0.875rem;
-  font-family: inherit;
-}
-.consulta-form textarea {
-  resize: none;
-  min-height: 4.5rem;
-}
 .btn-consulta-agendar {
-  align-self: flex-end;
   background-color: var(--btn-bg);
   color: #fff;
   border: none;
@@ -230,7 +209,7 @@ body {
   padding: 0.75rem 1.5rem;
   font-size: 0.875rem;
   font-weight: 600;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
@@ -241,121 +220,314 @@ body {
   transform: scale(1.05);
 }
 
-/* Cards container */
-.cards-container {
+/* Dados Pessoais */
+.profile-photo-area {
+  text-align: center;
+}
+.profile-photo-area .profile-picture {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 1rem;
+}
+.photo-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.photo-buttons button {
+  padding: 0.5rem 1rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.photo-buttons .edit-photo-button {
+  background-color: var(--btn-bg);
+  color: #fff;
+}
+.photo-buttons .edit-photo-button:hover {
+  background-color: var(--btn-hover-bg);
+  transform: translateY(-2px);
+}
+.photo-buttons .delete-photo-button {
+  background-color: #e53e3e;
+  color: #fff;
+}
+.photo-buttons .delete-photo-button:hover {
+  background-color: #c53030;
+  transform: translateY(-2px);
+}
+.profile-form {
+  max-width: 16rem;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  max-height: 60vh;
-  overflow-y: auto;
-  padding-right: 0.5rem;
+  gap: 0.75rem;
+}
+.profile-form label span {
+  color: #4a4a4a;
+  font-size: 0.75rem;
+}
+.profile-form input {
+  margin-top: 0.25rem;
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+.toggle-password {
+  position: absolute;
+  right: 0.625rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.75rem;
+}
+.btn-highlight {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  margin: 1rem auto 0;
+  display: block;
+}
+.btn-highlight:hover {
+  background-color: var(--accent-color);
+  transform: scale(1.05);
 }
 
-/* Appointment Card */
-.appointment-card {
+/* Meus PETS */
+/* estilo “fora da caixinha” do formulário */
+#meus-pets .consulta-form {
+  background: linear-gradient(135deg, #897ed4, #EBE8FC);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+#meus-pets .consulta-form .field-group label {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+#meus-pets .consulta-form .field-group label span {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+#meus-pets .consulta-form input,
+#meus-pets .consulta-form select {
   width: 100%;
-  max-width: 28rem;
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  background: transparent;
+}
+#meus-pets .consulta-form input::placeholder {
+  color: #999;
+}
+
+/* Botão Cadastrar PET */
+.btn-cadastrar {
+  display: block;
+  background: linear-gradient(45deg, #b07bf5, #fef3c7);
+  color: #000000;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   margin: 0 auto;
-  padding: 1rem 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.btn-cadastrar:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 0 20px rgba(224,126,47,0.6);
+}
+
+/* estado vazio */
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.875rem;
+  color: var(--text-dark);
+}
+.empty-state .btn-cadastrar {
+  margin-top: 1rem;
+}
+
+/* cards de PETS */
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 0;
+  justify-content: center;
+}
+.appointment-card {
   background: #fff;
   border-radius: 1rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: calc(50% - 1rem);
+  max-width: 20rem;
+  padding: 1rem;
   position: relative;
   transition: background 0.3s;
-}
-.appointment-card.rejected {
-  background-color: #FEF2F2;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 .appointment-card.hide {
   transform: scale(0.8);
   opacity: 0;
   transition: transform 0.3s, opacity 0.3s;
 }
-
-/* Status badge */
-.status {
-  font-size: 0.75rem;
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+.pet-info {
+  flex: 1;
+}
+.pet-info .pet-name {
+  margin: 0;
+  font-size: 1.125rem;
   font-weight: 600;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  text-transform: uppercase;
-  display: inline-block;
 }
-.status.approved {
-  background: #E6FFFA;
-  color: #2C7A7B;
+.pet-info .pet-type {
+  display: block;
+  font-size: 0.875rem;
+  color: #718096;
+  margin-bottom: 0.5rem;
 }
-.status.rejected {
-  background-color: #FEE2E2;
-  color: #C53030;
+.pet-details {
+  margin: 0;
+  padding-left: 1rem;
+  list-style: disc;
+  font-size: 0.875rem;
+  color: #4A5568;
+}
+.pet-details li {
+  margin: 0.25rem 0;
+}
+.cancel-card-btn {
+  background: none;
+  border: none;
+  color: #e53e3e;
+  cursor: pointer;
+  font-size: 0.875rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
 }
 
-/* Card content */
-.card-left {
+/* Footer */
+.footer {
+  background-color: #FDF3DC;
+  clip-path: polygon(
+    0 15%,10% 0,30% 10%,50% 0,70% 10%,
+    90% 0,100% 15%,100% 100%,0 100%
+  );
+  border-top: 1px solid #d1d5db;
+}
+.footer-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-size: 0.5625rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  align-items: flex-start;
+  min-height: 80px;
+}
+@media (min-width: 768px) {
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.footer-brand {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
-.avatar {
-  width: 60px;
-  height: 60px;
+.footer-brand img {
+  width: 100px;
+  height: 40px;
+  object-fit: contain;
+}
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: var(--highlight-text);
+  font-weight: 400;
+}
+@media (min-width: 768px) {
+  .footer-info { flex-direction: row; gap: 4rem; }
+}
+.footer-section p {
+  margin: 0.25rem 0;
+  line-height: 1.25;
+}
+.footer-title {
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid var(--primary-color);
+  padding-bottom: 0.25rem;
+}
+.footer-indicators {
+  display: flex;
+  gap: 0.5rem;
+}
+.indicator {
+  width: 1rem;
+  height: 1rem;
   border-radius: 50%;
-  object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-.doctor-info h4 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #2D3748;
+.indicator.primary {
+  background: var(--primary-color);
 }
-.doctor-info p {
-  margin: 0;
-  font-size: 0.875rem;
-  color: #718096;
-}
-.card-group {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-.info-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-.schedule-list {
-  margin: 0;
-  padding-left: 1rem;
-  list-style: disc;
-}
-.schedule-list li {
-  margin: 0.15rem 0;
-  font-size: 0.875rem;
-  color: #4A5568;
-}
-.card-right {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #319795;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-.card-right i {
-  font-size: 1.25rem;
+.indicator.secondary {
+  background: var(--primary-color);
+  opacity: 0.6;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
 }
 
-/* 1) Breathe animation on Cancel button */
+/* Animações */
 @keyframes breathe {
-  0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.05); }
+  0%,100% { transform: scale(1); }
+  50%     { transform: scale(1.05); }
 }
 .cancel-card-btn:hover {
   animation: breathe 1.5s ease-in-out infinite;
 }
-
-/* 2) Confirmation tooltip */
 .confirm-tooltip {
   position: absolute;
   top: -2.5rem;
@@ -382,7 +554,6 @@ body {
 .confirm-tooltip .yes { color: #C53030; }
 .confirm-tooltip .no  { color: #4A5568; }
 
-/* 3) Shake + Glow animations */
 @keyframes shake {
   0%,100% { transform: translateX(0); }
   25%,75% { transform: translateX(-4px); }
@@ -395,260 +566,4 @@ body {
 .appointment-card.rejected {
   animation: shake 0.3s ease, glow 1s ease-in-out 1;
   transform-origin: center;
-}
-
-/* Restante do CSS (Dados Pessoais, Meus PETS, Footer etc.) permanece sem alterações */
-
-.appointment-card .status {
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  text-transform: uppercase;
-}
-.status.approved {
-  background: #E6FFFA;
-  color: #2C7A7B;
-}
-.status.rejected {
-  background-color: #FEE2E2;
-  color: #C53030;
-}
-
-.card-left {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.doctor-info h4 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #2D3748;
-}
-.doctor-info p {
-  margin: 0;
-  font-size: 0.875rem;
-  color: #718096;
-}
-
-.card-group {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.info-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-.schedule-list {
-  margin: 0;
-  padding-left: 1rem;
-  list-style: disc;
-}
-.schedule-list li {
-  margin: 0.15rem 0;
-  font-size: 0.875rem;
-  color: #4A5568;
-}
-.info-item i {
-  font-size: 1.25rem;
-  color: #4A5568;
-}
-
-.card-right {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #319795;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-.card-right i {
-  font-size: 1.25rem;
-}
-
-.status {
-  display: inline-block;
-  vertical-align: top;
-  margin-left: auto;
-}
-
-
-.edit-photo-button,
-.edit-pet-photo-button,
-.delete-photo-button,
-.delete-pet-photo-button {
-  background-color: var(--highlight-bg);
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.625rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
-}
-.delete-photo-button,
-.delete-pet-photo-button {
-  color: red;
-}
-
-.profile-form {
-  max-width: 16rem;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-.profile-form label {
-  display: block;
-}
-.profile-form label span {
-  color: #4a4a4a;
-  font-size: 0.75rem;
-}
-.profile-form input {
-  margin-top: 0.25rem;
-  width: 100%;
-  padding: 0.25rem 0.5rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.25rem;
-  font-size: 0.75rem;
-}
-.toggle-password {
-  position: absolute;
-  right: 0.625rem;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  user-select: none;
-  font-size: 0.75rem;
-  color: var(--text-dark);
-}
-
-.btn-highlight {
-  background-color: var(--highlight-bg);
-  color: var(--highlight-text);
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.625rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
-  margin-top: 0.5rem;
-  align-self: center;
-}
-
-#consultasContent div,
-#meusPetsContent div {
-  margin-bottom: 0.5rem;
-  font-style: italic;
-}
-
-#consultasContent p,
-#meusPetsContent p {
-  font-style: italic;
-}
-
-.footer {
-  background-color: #FDF3DC;
-  clip-path: polygon(0 15%,10% 0,30% 10%,50% 0,70% 10%,90% 0,100% 15%,100% 100%,0 100%);
-  border-top: 1px solid #d1d5db;
-}
-.footer-container {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  font-size: 0.5625rem;
-  color: var(--primary-color);
-  font-weight: 600;
-  align-items: flex-start;
-  min-height: 80px;
-}
-
-.footer-logo {
-  max-height: 48px;
-  width: auto;
-  object-fit: contain;
-  margin-right: 0.75rem;
-  vertical-align: middle;
-}
-
-@media (min-width: 768px) {
-  .footer-container {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.footer-brand img {
-  width: 100px;
-  height: 40px;
-  object-fit: contain;
-}
-.footer-info {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-color: var(--highlight-text);
-  font-weight: 400;
-}
-@media (min-width: 768px) {
-  .footer-info {
-    flex-direction: row;
-    gap: 4rem;
-  }
-}
-.footer-section p {
-  margin: 0.25rem 0;
-  line-height: 1.25;
-}
-.footer-title {
-  font-weight: 600;
-  color: var(--primary-color);
-  margin-bottom: 0.25rem;
-  border-bottom: 1px solid var(--primary-color);
-  padding-bottom: 0.25rem;
-}
-.footer-indicators {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.expired {
-  opacity: 0.6;
-  color: red;
-}
-
-.indicator {
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-.indicator.primary { background: var(--primary-color); }
-.indicator.secondary {
-  background: var(--primary-color);
-  opacity: 0.6;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
 }

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Miau & Auau – Perfil</title>
 
+  <!-- Font Awesome & Montserrat -->
   <link
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     rel="stylesheet"
@@ -13,18 +14,17 @@
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="teste1.css"/>
 
-  <!-- Estilos adicionais para status reprovado -->
-  <style>
-    .status.rejected {
-      background-color: #FEE2E2;
-      color: #C53030;
-    }
-    .appointment-card.rejected {
-      background-color: #FEF2F2;
-    }
-  </style>
+  <!-- Seu CSS principal -->
+  <link rel="stylesheet" href="perfil-novo.css"/>
+
+  <!-- Flatpickr CSS e idioma PT -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    rel="stylesheet"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
 </head>
 <body>
   <header class="header">
@@ -34,10 +34,10 @@
         <span class="logo-text">Miau &amp; Auau</span>
       </div>
       <nav class="nav-desktop">
-        <a href="#">Meu perfil</a>
-        <a href="#">Sobre</a>
-        <a href="#">Serviços</a>
-        <a href="#">FAQ</a>
+        <button>Meu perfil</button>
+        <button>Sobre</button>
+        <button>Serviços</button>
+        <button>FAQ</button>
       </nav>
       <button type="button" class="btn-consult">Marcar consulta</button>
     </div>
@@ -69,7 +69,12 @@
               <label for="newConsultaDatetime">
                 <i class="far fa-calendar-alt"></i>
                 <span>Data e Hora</span>
-                <input type="datetime-local" id="newConsultaDatetime" required />
+                <input
+                  type="text"
+                  id="newConsultaDatetime"
+                  placeholder="Selecione data e hora"
+                  required
+                />
               </label>
             </div>
             <div class="field-group">
@@ -78,12 +83,14 @@
                 <span>Médico</span>
                 <select id="doctorSelect" required>
                   <option value="">Selecione o médico</option>
-                  <option value="kim"
+                  <option
+                    value="kim"
                     data-name="Dra. Kim Kardashian"
                     data-specialty="Veterinário"
                     data-avatar="https://storage.googleapis.com/a1aa/image/861c762e-ca89-4b87-e68e-8188d7f061c7.jpg"
                   >Dra. Kim Kardashian</option>
-                  <option value="johndoe"
+                  <option
+                    value="johndoe"
                     data-name="Dr. John Doe"
                     data-specialty="Veterinário"
                     data-avatar="https://storage.googleapis.com/a1aa/image/example-avatar.jpg"
@@ -104,7 +111,6 @@
               <i class="far fa-paper-plane"></i> Agendar
             </button>
           </form>
-
           <div id="cardsContainer" class="cards-container"></div>
         </div>
 
@@ -146,7 +152,7 @@
         <div class="profile-photo-area">
           <span>Foto de perfil</span>
           <img
-            src="https://storage.googleapis.com/a1aa/image/861c762e-ca89-4b87-e68e-8188d7f061c7.jpg"
+            src="perfil.jpg"
             alt="Avatar de perfil"
             class="profile-picture"
           />
@@ -173,6 +179,8 @@
       <!-- Seção Meus PETS -->
       <div id="meus-pets" class="section hidden">
         <h3>Meus PETS</h3>
+
+        <!-- Formulário ampliado -->
         <form id="newPetForm" class="consulta-form">
           <div class="field-group">
             <label for="newPetName">
@@ -186,16 +194,58 @@
               <input type="file" id="newPetPhoto" accept="image/*"/>
             </label>
           </div>
-          <button type="submit" class="btn-consulta-agendar">
-            <i class="fas fa-plus"></i> Cadastrar PET
-          </button>
+          <div class="field-group">
+            <label for="newPetType">
+              <i class="fas fa-paw"></i><span>Tipo</span>
+              <select id="newPetType" required>
+                <option value="">Selecione tipo</option>
+                <option value="Cachorro">Cachorro</option>
+                <option value="Gato">Gato</option>
+              </select>
+            </label>
+          </div>
+          <div class="field-group">
+            <label for="newPetAge">
+              <i class="fas fa-birthday-cake"></i><span>Idade (anos)</span>
+              <input type="number" id="newPetAge" min="0" placeholder="Ex: 3" required/>
+            </label>
+          </div>
+          <div class="field-group">
+            <label for="newPetBreed">
+              <i class="fas fa-tag"></i><span>Raça</span>
+              <input type="text" id="newPetBreed" placeholder="Digite a raça" required/>
+            </label>
+          </div>
+          <div class="field-group">
+            <label for="newPetSize">
+              <i class="fas fa-arrows-alt"></i><span>Porte</span>
+              <select id="newPetSize" required>
+                <option value="">Selecione porte</option>
+                <option value="Pequeno porte">Pequeno porte</option>
+                <option value="Médio porte">Médio porte</option>
+                <option value="Grande porte">Grande porte</option>
+              </select>
+            </label>
+          </div>
         </form>
+
+        <!-- Container para cards ou estado vazio -->
         <div id="petsContainer" class="cards-container"></div>
+
+        <!-- Template de card -->
         <template id="pet-template">
           <div class="appointment-card">
-            <div class="card-left" style="flex-direction:column;align-items:center;">
+            <div class="card-left">
               <img src="" alt="Foto do PET" class="avatar"/>
-              <h4 class="pet-name" style="margin:0.5rem 0;"></h4>
+              <div class="pet-info">
+                <h4 class="pet-name"></h4>
+                <span class="pet-type"></span>
+                <ul class="pet-details">
+                  <li>Idade: <span class="pet-age"></span></li>
+                  <li>Raça: <span class="pet-breed"></span></li>
+                  <li>Porte: <span class="pet-size"></span></li>
+                </ul>
+              </div>
             </div>
             <button class="cancel-card-btn">Apagar PET</button>
           </div>
@@ -232,6 +282,6 @@
     </div>
   </footer>
 
-  <script src="script-teste.js"></script>
+  <script src="perfil-novo.js"></script>
 </body>
 </html>
