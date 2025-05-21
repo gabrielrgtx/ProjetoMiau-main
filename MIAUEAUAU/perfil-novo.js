@@ -59,9 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 6) Perfil Foto
-  const profileImage = document.querySelector('.profile-picture'),
-        fileInput    = document.getElementById('fileInput'),
-        editPhotoBtn = document.querySelector('.edit-photo-button'),
+  const profileImage   = document.querySelector('.profile-picture'),
+        fileInput      = document.getElementById('fileInput'),
+        editPhotoBtn   = document.querySelector('.edit-photo-button'),
         deletePhotoBtn = document.querySelector('.delete-photo-button');
   if (editPhotoBtn && fileInput) {
     editPhotoBtn.addEventListener('click', () => fileInput.click());
@@ -96,9 +96,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const fields = ['nome','sobrenome','email','senha','cpf'],
             vals   = fields.map(id => formProfile[id].value.trim()),
             emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (vals.some(v => !v)) { showFeedback('Preencha todos os campos.'); return; }
-      if (!emailRe.test(vals[2])) { showFeedback('E-mail inválido.'); return; }
-      if (vals[3].length < 4)   { showFeedback('Senha muito curta.'); return; }
+      if (vals.some(v => !v))       { showFeedback('Preencha todos os campos.'); return; }
+      if (!emailRe.test(vals[2]))   { showFeedback('E-mail inválido.');     return; }
+      if (vals[3].length < 4)       { showFeedback('Senha muito curta.');     return; }
       fields.forEach((id,i) => localStorage.setItem(id, vals[i]));
       showFeedback('Dados salvos com sucesso!');
     });
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (sp && profileImage) profileImage.src = sp;
   }
 
-  // 8) Pets
+  // 8) Meus PETS
   const newPetForm    = document.getElementById('newPetForm'),
         petNameInput  = document.getElementById('newPetName'),
         petPhotoInput = document.getElementById('newPetPhoto'),
@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
         petsContainer = document.getElementById('petsContainer'),
         petTemplate   = document.getElementById('pet-template');
 
-  // cria botão Cadastrar se não existir
+  // Garante que haja um botão Cadastrar PET
   let btnCadastrar = newPetForm.querySelector('.btn-cadastrar');
   if (!btnCadastrar) {
     btnCadastrar = document.createElement('button');
@@ -148,18 +148,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const clone = petTemplate.content.cloneNode(true),
             card  = clone.querySelector('.appointment-card');
 
-      clone.querySelector('.avatar').src       = p.photo || 'francisco.jpeg';
-      clone.querySelector('.pet-name').textContent  = p.name;
-      clone.querySelector('.pet-type').textContent  = p.type;
-      clone.querySelector('.pet-age').textContent   = p.age;
-      clone.querySelector('.pet-breed').textContent = p.breed;
-      clone.querySelector('.pet-size').textContent  = p.size;
+      clone.querySelector('.avatar').src          = p.photo || 'francisco.jpeg';
+      clone.querySelector('.pet-name').textContent   = p.name;
+      clone.querySelector('.pet-type').textContent   = p.type;
+      clone.querySelector('.pet-age').textContent    = p.age;
+      clone.querySelector('.pet-breed').textContent  = p.breed;
+      clone.querySelector('.pet-size').textContent   = p.size;
 
       card.querySelector('.cancel-card-btn').addEventListener('click', () => {
         meusPets = meusPets.filter(x => x.id !== p.id);
         localStorage.setItem('meusPets', JSON.stringify(meusPets));
         showFeedback('PET apagado com sucesso.');
         renderPets();
+        populatePetSelect();
       });
       petsContainer.appendChild(clone);
     });
@@ -190,10 +191,10 @@ document.addEventListener("DOMContentLoaded", () => {
           size  = petSizeInput.value,
           id    = Date.now().toString(),
           photo = petPhotoInput.files[0]
-                  ? URL.createObjectURL(petPhotoInput.files[0])
-                  : null;
+                    ? URL.createObjectURL(petPhotoInput.files[0])
+                    : null;
 
-    if (!nome || !type || !age || !breed || !size) {
+    if (!nome||!type||!age||!breed||!size) {
       showFeedback('Preencha todos os campos do PET.');
       return;
     }
@@ -208,32 +209,32 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 9) Consultas
-  const formConsultas    = document.getElementById('newConsultaForm'),
-        inputDatetime    = document.getElementById('newConsultaDatetime'),
-        doctorSelect     = document.getElementById('doctorSelect'),
-        petSelectDOM     = document.getElementById('petSelect'),
-        cardsContainerEl = document.getElementById('cardsContainer'),
-        templateCons     = document.getElementById('appointment-template');
+  const formConsultas     = document.getElementById('newConsultaForm'),
+        inputDatetime     = document.getElementById('newConsultaDatetime'),
+        doctorSelect      = document.getElementById('doctorSelect'),
+        petSelectDOM      = document.getElementById('petSelect'),
+        cardsContainerEl  = document.getElementById('cardsContainer'),
+        templateCons      = document.getElementById('appointment-template');
   let consultas = JSON.parse(localStorage.getItem('consultas') || '[]');
 
   function renderConsultas() {
     cardsContainerEl.innerHTML = '';
     const nowB = new Date(new Date().toLocaleString('en-US',{ timeZone:'America/Sao_Paulo' }));
     consultas.sort((a,b)=>new Date(a.datetime)-new Date(b.datetime))
-             .forEach(c=> {
+             .forEach(c => {
       const clone     = templateCons.content.cloneNode(true),
             card      = clone.querySelector('.appointment-card'),
             btnCancel = clone.querySelector('.cancel-card-btn'),
             statusSpan= clone.querySelector('.status'),
             dt        = new Date(c.datetime);
 
-      clone.querySelector('.avatar').src             = c.avatarUrl;
-      clone.querySelector('.doctor-name').textContent= c.doctorName;
+      clone.querySelector('.avatar').src            = c.avatarUrl;
+      clone.querySelector('.doctor-name').textContent      = c.doctorName;
       clone.querySelector('.doctor-specialty').textContent = c.specialty;
-      clone.querySelector('.card-date').textContent  = dt.toLocaleDateString();
-      clone.querySelector('.card-time').textContent  = dt.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
-      clone.querySelector('.card-pet-name').textContent = c.petName;
-      clone.querySelector('.card-type').textContent  = c.type;
+      clone.querySelector('.card-date').textContent        = dt.toLocaleDateString();
+      clone.querySelector('.card-time').textContent        = dt.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+      clone.querySelector('.card-pet-name').textContent    = c.petName;
+      clone.querySelector('.card-type').textContent        = c.type;
 
       if (dt < nowB) {
         card.classList.add('rejected');
@@ -259,22 +260,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   formConsultas.addEventListener('submit', e => {
     e.preventDefault();
-    const dtVal  = inputDatetime.value,
-          docOpt = doctorSelect.options[doctorSelect.selectedIndex],
-          petId  = petSelectDOM.value,
-          petObj = meusPets.find(p=>p.id===petId) || {};
+    const dtVal   = inputDatetime.value,
+          docOpt  = doctorSelect.options[doctorSelect.selectedIndex],
+          petId   = petSelectDOM.value,
+          petObj  = meusPets.find(p=>p.id===petId) || {};
     if (!dtVal||!docOpt.value||!petId) {
       showFeedback('Preencha data, médico e selecione um PET.');
       return;
     }
     const nova = {
       id: Date.now(),
-      datetime: dtVal,
-      doctorName: docOpt.dataset.name,
-      specialty: docOpt.dataset.specialty,
-      avatarUrl: docOpt.dataset.avatar,
-      petName: petObj.name,
-      type: 'Presencial'
+      datetime:    dtVal,
+      doctorName:  docOpt.dataset.name,
+      specialty:   docOpt.dataset.specialty,
+      avatarUrl:   docOpt.dataset.avatar,
+      petName:     petObj.name,
+      type:        'Presencial'
     };
     consultas.push(nova);
     localStorage.setItem('consultas', JSON.stringify(consultas));
@@ -295,24 +296,6 @@ document.addEventListener("DOMContentLoaded", () => {
     altFormat: "d/m/Y H:i",
     minDate: "today",
     allowInput: true,
-    onChange: function(_, dateStr) {
-      showFeedback("Data/hora selecionada: " + dateStr);
-    }
+    onChange: (_, dateStr) => showFeedback("Data/hora selecionada: " + dateStr)
   });
-
 });
-
-
-  // Flatpickr
-  flatpickr("#newConsultaDatetime", {
-    locale: "pt",
-    enableTime: true,
-    time_24hr: true,
-    dateFormat: "Y-m-d\\TH:i",
-    altInput: true,
-    altFormat: "d/m/Y H:i",
-    minDate: "today",
-    allowInput: true,
-    onChange: (sd, ds) => showFeedback("Data/hora selecionada: " + ds)
-  });
-

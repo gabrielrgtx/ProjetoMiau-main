@@ -11,6 +11,7 @@
 }
 
 .hidden { display: none !important; }
+.position-relative { position: relative; }
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -284,8 +285,8 @@ body {
 }
 .toggle-password {
   position: absolute;
-  right: 0.625rem;
-  top: 50%;
+  right: -1rem;
+  top: 70%;
   transform: translateY(-50%);
   cursor: pointer;
   user-select: none;
@@ -310,9 +311,8 @@ body {
 }
 
 /* Meus PETS */
-/* estilo “fora da caixinha” do formulário */
 #meus-pets .consulta-form {
-  background: linear-gradient(135deg, #897ed4, #EBE8FC);
+  background: linear-gradient(135deg, #7567d1, #6b4fdb);
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 10px 20px rgba(0,0,0,0.2);
@@ -322,8 +322,6 @@ body {
   border-radius: 0.5rem;
   padding: 0.75rem;
   margin-bottom: 1rem;
-  position: relative;
-  overflow: hidden;
 }
 #meus-pets .consulta-form .field-group label span {
   font-weight: 600;
@@ -341,12 +339,10 @@ body {
 #meus-pets .consulta-form input::placeholder {
   color: #999;
 }
-
-/* Botão Cadastrar PET */
 .btn-cadastrar {
   display: block;
-  background: linear-gradient(45deg, #b07bf5, #fef3c7);
-  color: #000000;
+  background: linear-gradient(45deg, #ff0080, #e07e2f);
+  color: #fff;
   border: none;
   border-radius: 2rem;
   padding: 0.75rem 2rem;
@@ -362,19 +358,11 @@ body {
   transform: scale(1.05) rotate(-2deg);
   box-shadow: 0 0 20px rgba(224,126,47,0.6);
 }
-
-/* estado vazio */
 .empty-state {
   text-align: center;
   padding: 2rem;
   font-size: 0.875rem;
-  color: var(--text-dark);
 }
-.empty-state .btn-cadastrar {
-  margin-top: 1rem;
-}
-
-/* cards de PETS */
 .cards-container {
   display: flex;
   flex-wrap: wrap;
@@ -390,7 +378,6 @@ body {
   max-width: 20rem;
   padding: 1rem;
   position: relative;
-  transition: background 0.3s;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -533,7 +520,6 @@ body {
   top: -2.5rem;
   right: 0;
   background: #fff;
-  border: 1px solid #ccc;
   border-radius: 0.25rem;
   padding: 0.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
