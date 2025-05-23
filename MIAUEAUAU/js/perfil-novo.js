@@ -1,7 +1,5 @@
-// perfil-novo.js
-
 document.addEventListener("DOMContentLoaded", () => {
-  // 1) Feedback
+  
   const fb = document.createElement('div');
   fb.id = 'feedbackContainer';
   Object.assign(fb.style, {
@@ -24,11 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => fb.style.display = 'none', d);
   };
 
-  // 2) Saudação
+  
   const nameEl = document.getElementById('userNameDisplay');
   if (nameEl) nameEl.textContent = localStorage.getItem('nome') || 'Cliente';
 
-  // 3) Toggle Senha
+  
   const tt = document.getElementById('toggleSenha'),
         pw = document.getElementById('senha');
   if (tt && pw) tt.addEventListener('click', () => {
@@ -37,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     tt.textContent = is ? 'Ocultar' : 'Mostrar';
   });
 
-  // 4) Abas
+  
   document.querySelectorAll('.tab-button').forEach(tab => {
     tab.addEventListener('click', () => {
       document.querySelectorAll('.tab-button').forEach(t => t.classList.remove('active'));
@@ -48,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   if (document.querySelector('.tab-button')) document.querySelector('.tab-button').click();
 
-  // 5) Formata CPF
+  
   const cpf = document.getElementById('cpf');
   if (cpf) cpf.addEventListener('input', e => {
     let v = e.target.value.replace(/\D/g, '').slice(0, 11);
@@ -58,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.target.value = v;
   });
 
-  // 6) Perfil Foto
+  
   const profileImage   = document.querySelector('.profile-picture'),
         fileInput      = document.getElementById('fileInput'),
         editPhotoBtn   = document.querySelector('.edit-photo-button'),
@@ -88,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 7) Form Perfil
+  
   const formProfile = document.getElementById('profileForm');
   if (formProfile) {
     formProfile.addEventListener('submit', e => {
@@ -110,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (sp && profileImage) profileImage.src = sp;
   }
 
-  // 8) Meus PETS
+  
   const newPetForm    = document.getElementById('newPetForm'),
         petNameInput  = document.getElementById('newPetName'),
         petPhotoInput = document.getElementById('newPetPhoto'),
@@ -121,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         petsContainer = document.getElementById('petsContainer'),
         petTemplate   = document.getElementById('pet-template');
 
-  // Garante que haja um botão Cadastrar PET
+  
   let btnCadastrar = newPetForm.querySelector('.btn-cadastrar');
   if (!btnCadastrar) {
     btnCadastrar = document.createElement('button');
@@ -208,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showFeedback('PET cadastrado com sucesso!');
   });
 
-  // 9) Consultas
+  
   const formConsultas     = document.getElementById('newConsultaForm'),
         inputDatetime     = document.getElementById('newConsultaDatetime'),
         doctorSelect      = document.getElementById('doctorSelect'),
@@ -286,7 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showFeedback('Consulta marcada com sucesso!');
   });
 
-  // Flatpickr
+  
   flatpickr("#newConsultaDatetime", {
     locale: "pt",
     enableTime: true,
