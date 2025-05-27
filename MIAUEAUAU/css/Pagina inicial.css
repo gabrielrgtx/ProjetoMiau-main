@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
 
 :root {
-  --roxo: #8373BF;
+  --roxo: #9770f1;
   --amarelo: #ffeb3b;
   --laranja: #ff9800;
   --laranja-hover: #e68900;
@@ -92,7 +92,6 @@ nav ul li a:hover {
   color: var(--amarelo);
 }
 
-/* Botões unificados */
 .btn {
   background-color: var(--laranja);
   color: var(--branco);
@@ -506,7 +505,6 @@ img, .card-image, .logo-empresa, .logo-footer, .logo-google {
   height: auto;
 }
 
-/* Responsivo */
 @media (max-width: 1280px) {
   .cards {
     grid-template-columns: 1fr 1fr;

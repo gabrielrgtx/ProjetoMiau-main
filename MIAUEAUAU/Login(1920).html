@@ -1,85 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miau & Auau - Login</title>
-    <link rel="stylesheet" href="styles-login-1920.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miau & Auau - Login</title>
+  <link rel="stylesheet" href="css/styles-login-1920.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">
-                <img src="logo1.png" alt="Miau & Auau Logo">
-                <h1>Miau & Auau</h1>
-            </div>
-        </header>
-        <main class="login-section">
-            <h2>Bem vindo a Miau & Auau</h2>
-            <p>Para marcar uma consulta e acessar seus dados, entre com sua conta</p>
-            <form class="login-form">
-                <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Digite seu email">
-                </div>
-                <div class="input-group">
-                    <label for="senha">Senha</label>
-                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
-                </div>
-                <div class="forgot-password">
-                    <a href="#">Esqueci minha senha</a>
-                </div>
-                <button type="submit" class="button primary">Entrar</button>
-            </form>
-            <div class="separator">
-                <span>OU</span>
-            </div>
-            <div class="social-login">
-                <button class="button social google">
-                    <img src="google-g.png" alt="Google"> Entrar com Google
-                </button>
-                <button class="button social facebook">
-                    <img src="facebook.png" alt="Facebook"> Entrar com Facebook
-                </button>
-                <button class="button social apple">
-                    <img src="apple-logo.jpg" alt="Apple"> Entrar com Apple
-                </button>
-            </div>
-            <div class="create-account">
-                <span>Deseja criar uma conta? <a href="#">Criar conta</a></span>
-            </div>
-        </main>
-        <footer>
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="logo1.png" alt="Miau & Auau Logo">
-                    <p>Miau & Auau</p>
-                </div>
-                <div class="horarios">
-                    <h3>Horários</h3>
-                    <p>Segunda - Domingo: 10 am - 9 pm</p>
-                    <p>Todos os feriados</p>
-                </div>
-                <div class="localizacao">
-                    <h3>Localização</h3>
-                    <p>Av. Eng. Eusébio Stevaux, 823 -</p>
-                    <p>Santo Amaro, São Paulo - SP,</p>
-                    <p>04696-000</p>
-                </div>
-                <div class="contato">
-                    <h3>Contato</h3>
-                    <p>Alguma pergunta? Ligue para</p>
-                    <p>617-608-9131</p>
-                </div>
-                <div class="siga-nos">
-                    <h3>Siga-nos</h3>
-                    <div class="social-icons">
-                        <a href="#"><img src="instagram.png" alt="Instagram"></a>
-                        <a href="#"><img src="facebook.png" alt="Facebook"></a>
-                    </div>
-                </div>
-            </div>
-        </footer>
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="img/logo1.png" alt="Miau & Auau Logo">
+        <h1>Miau & Auau</h1>
+      </div>
+    </header>
+
+    <main class="login-section">
+      <canvas id="mascot-canvas" width="240" height="80"></canvas>
+
+      <h2>Bem vindo a Miau & Auau</h2>
+      <p>Para marcar uma consulta e acessar seus dados, entre com sua conta</p>
+      <form class="login-form" id="login-form">
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+          <span class="status-icon" id="email-status"></span>
+        </div>
+        <div class="input-group">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+          <span class="status-icon" id="senha-status"></span>
+        </div>
+        <div class="forgot-password">
+          <a href="#">Esqueci minha senha</a>
+        </div>
+        <button type="submit" class="button primary">Entrar</button>
+      </form>
+
+      <div class="separator"><span>OU</span></div>
+      <div class="social-login">
+        <button class="button social google">
+          <img src="img/google-g.png" alt="Google"> Entrar com Google
+        </button>
+        <button class="button social facebook">
+          <img src="img/facebook.png" alt="Facebook"> Entrar com Facebook
+        </button>
+        <button class="button social apple">
+          <img src="img/apple-logo.jpg" alt="Apple"> Entrar com Apple
+        </button>
+      </div>
+      <div class="create-account">
+        <span>Deseja criar uma conta? <a href="cadastro.html">Criar conta</a></span>
+      </div>
+    </main>
+
+    <div id="game-overlay" class="hidden">
+      <canvas id="game-canvas" width="400" height="400"></canvas>
+      <p id="game-message">Clique em todas as bolhas!</p>
     </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="img/logo1.png" alt="Miau & Auau Logo">
+          <p>Miau & Auau</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/script-login.js"></script>
 </body>
 </html>

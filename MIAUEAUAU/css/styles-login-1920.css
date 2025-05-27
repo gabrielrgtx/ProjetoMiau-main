@@ -2,36 +2,73 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
 
+:root {
+    --bg-color: #f0e9f0;
+    --card-bg: #e5d9ff;
+    --primary-color: #8c52ff;
+    --primary-hover: #703ade;
+    --text-color: #333;
+    --subtext-color: #555;
+    --separator-color: #ccc;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #3f3f3f;
+        --card-bg: #333;
+        --primary-color: #bb86fc;
+        --primary-hover: #9958a8;
+        --text-color: #ffffff;
+        --subtext-color: #ccc;
+        --separator-color: #555;
+    }
+}
+
 body {
-    font-family: sans-serif;
-    background-color: #f9f4f9;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    position: relative;
+    overflow: auto; 
 }
 
 .container {
-    background-color: #fff;
+    background-color: var(--card-bg);
     border-radius: 50px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
     width: 90%;
-    max-width: 1000px;
-    margin: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 header {
-    background-color: #f0e6f8;
+    background-color: var(--bg-color);
     padding: 20px;
     text-align: center;
-    border-bottom: 1px solid #e0d8e5;
+    border-bottom: 1px solid var(--separator-color);
 }
 
 header .logo {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 header .logo img {
@@ -40,7 +77,7 @@ header .logo img {
 }
 
 header .logo h1 {
-    color: #8c52ff;
+    color: var(--primary-color);
     margin: 0;
     font-family: 'Chewy', sans-serif;
 }
@@ -51,12 +88,12 @@ main.login-section {
 }
 
 main.login-section h2 {
-    color: #8c52ff;
+    color: var(--primary-color);
     margin-bottom: 10px;
 }
 
 main.login-section p {
-    color: #555;
+    color: var(--subtext-color);
     margin-bottom: 20px;
 }
 
@@ -74,7 +111,7 @@ main.login-section p {
 }
 
 .input-group label {
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 5px;
 }
 
@@ -86,13 +123,25 @@ main.login-section p {
     font-size: 16px;
 }
 
+.status-icon {
+    font-size: 18px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+.status-icon.valid {
+    color: green;
+}
+.status-icon.invalid {
+    color: red;
+}
+
 .forgot-password {
     text-align: right;
     margin-bottom: 10px;
 }
 
 .forgot-password a {
-    color: #8c52ff;
+    color: var(--primary-color);
     text-decoration: none;
     font-size: 14px;
 }
@@ -116,11 +165,10 @@ main.login-section p {
 }
 
 .button.primary {
-    background-color: #8c52ff;
+    background-color: var(--primary-color);
 }
-
 .button.primary:hover {
-    background-color: #703ade;
+    background-color: var(--primary-hover);
 }
 
 .separator {
@@ -128,14 +176,13 @@ main.login-section p {
     align-items: center;
     text-align: center;
     margin: 20px 0;
-    color: #ccc;
+    color: var(--separator-color);
 }
-
 .separator::before,
 .separator::after {
     content: '';
     flex-grow: 1;
-    background-color: #ccc;
+    background-color: var(--separator-color);
     height: 1px;
     margin: 0 10px;
 }
@@ -151,11 +198,9 @@ main.login-section p {
     background-color: #eee;
     color: #333;
 }
-
 .button.social:hover {
     background-color: #ddd;
 }
-
 .button.social img {
     height: 35px;
 }
@@ -164,7 +209,6 @@ main.login-section p {
     background-color: #486696;
     color: white;
 }
-
 .button.google:hover {
     background-color: #357ae8;
 }
@@ -173,7 +217,6 @@ main.login-section p {
     background-color: #1877f2;
     color: white;
 }
-
 .button.facebook:hover {
     background-color: #1565c0;
 }
@@ -182,29 +225,26 @@ main.login-section p {
     background-color: #000;
     color: white;
 }
-
 .button.apple:hover {
     background-color: #222;
 }
 
 .create-account {
     font-size: 14px;
-    color: #555;
+    color: var(--subtext-color);
 }
-
 .create-account a {
-    color: #8c52ff;
+    color: var(--primary-color);
     text-decoration: none;
 }
-
 .create-account a:hover {
     text-decoration: underline;
 }
 
 footer {
-    background-color: #f0e6f8;
+    background-color: var(--bg-color);
     padding: 30px;
-    border-top: 1px solid #e0d8e5;
+    border-top: 1px solid var(--separator-color);
 }
 
 .footer-content {
@@ -217,14 +257,12 @@ footer {
 .footer-logo {
     text-align: center;
 }
-
 .footer-logo img {
     height: 70px;
     margin-bottom: 5px;
 }
-
 .footer-logo p {
-    color: #8c52ff;
+    color: var(--primary-color);
     font-weight: bold;
     margin: 0;
     font-family: 'Chewy', sans-serif;
@@ -232,13 +270,12 @@ footer {
 }
 
 footer h3 {
-    color: #333;
+    color: var(--text-color);
     margin-top: 0;
     margin-bottom: 10px;
 }
-
 footer p {
-    color: #555;
+    color: var(--subtext-color);
     margin-bottom: 5px;
 }
 
@@ -246,7 +283,98 @@ footer p {
     display: inline-block;
     margin-right: 10px;
 }
-
 .social-icons img {
     height: 25px;
+}
+
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#mascot-canvas {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+#game-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+#game-overlay.hidden {
+    display: none;
+}
+#game-canvas {
+    background: #fff;
+    border-radius: 10px;
+}
+#game-message {
+    color: #fff;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        margin: 10px;
+    }
+    .social-login {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .button.social {
+        flex: 1 1 45%;
+    }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.container {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+header .logo h1,
+main.login-section h2,
+.footer-content > div {
+  animation: slideIn 0.6s ease-out both;
+}
+
+.button {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .3s ease-out, transform .3s ease-out;
+}
+.button.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
+.button:hover {
+  animation: bounce 0.4s;
+}
 }
